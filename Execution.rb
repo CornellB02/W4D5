@@ -27,6 +27,45 @@ end
 
 # list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 # p my_min(list)  # =>  -5
+require 'byebug'
 
+def largest_contiguous_subsum(list)
+  
+  result_arr = []
 
-def 
+  list.each.with_index do |ele, i|
+    
+    (0...list.length).each do |j|
+      if j >= i
+      result_arr << list[i..j]
+      end
+    end
+    
+  end
+  
+  sums_of_arr = []
+  
+  result_arr.each do |sub_arr|
+
+    
+     sums_of_arr << sub_arr.sum
+    
+
+  end
+
+  sums_of_arr.max
+
+end
+
+# Time complexity of O(n)
+
+list = [5, 3, -7]
+p largest_contiguous_subsum(list) # => 8
+
+list = [2, 3, -6, 7, -6, 7]
+p largest_contiguous_subsum(list) # => 8 (from [7, -6, 7])
+
+list = [-5, -1, -3]
+p largest_contiguous_subsum(list) # => -1 (from [-1])
+
+#phase 2
